@@ -3,7 +3,7 @@ export default function Revised({ tasks, onDeleteTask, onEditTask,onFilterTasks 
     <div className="mb-4 w-full px-2 sm:w-1/2 md:w-1/4">
       <div className="rounded-lg bg-rose-500 p-4">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Revise ({tasks.length})</h3>
+          <h3 className="text-lg font-semibold">Revised ({tasks.length})</h3>
           <svg
            onClick={onFilterTasks} 
             xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,14 @@ export default function Revised({ tasks, onDeleteTask, onEditTask,onFilterTasks 
             <path d="M18 6l0 12" />
           </svg>
         </div>
-        {tasks.map((task, index) => (
+                 {/* Check if tasks list is empty */}
+        {tasks.length === 0 ? (
+    <p className="text-white text-center text-xl font-semibold italic opacity-75 mt-4 flex items-center justify-center gap-2">
+    
+    Revised list is empty
+  </p>
+        ) : (
+        tasks.map((task, index) => (
           <div key={index} className="mb-4 rounded-lg bg-gray-800 p-4">
             <div className="flex justify-between">
               <h4 className="mb-2 flex-1 font-semibold text-blue-500">
@@ -74,7 +81,8 @@ export default function Revised({ tasks, onDeleteTask, onEditTask,onFilterTasks 
             <p className="text-zinc-200">{task.description}</p>
             <p className="mt-6 text-xs text-zinc-400">{task.dueDate}</p>
           </div>
-        ))}
+        ))
+      )}
       </div>
     </div>
   );

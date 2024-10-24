@@ -25,8 +25,15 @@ export default function OnProgressList({tasks, onDeleteTask, onEditTask,onFilter
             <path d="M18 6l0 12" />
           </svg>
         </div>
+         {/* Check if tasks list is empty */}
+         {tasks.length === 0 ? (
+    <p className="text-white text-center text-xl font-semibold italic opacity-75 mt-4 flex items-center justify-center gap-2">
+    
+    On Progress list is empty
+  </p>
+        ) : (
 
-        {tasks.map((task, index) => (
+        tasks.map((task, index) => (
           <div key={index} className="mb-4 rounded-lg bg-gray-800 p-4">
             <div className="flex justify-between">
               <h4 className="mb-2 flex-1 font-semibold text-blue-500">
@@ -77,7 +84,8 @@ export default function OnProgressList({tasks, onDeleteTask, onEditTask,onFilter
             <p className="text-zinc-200">{task.description}</p>
             <p className="mt-6 text-xs text-zinc-400">{task.dueDate}</p>
           </div>
-        ))}
+        ))
+      )}
       </div>
     </div>
   );

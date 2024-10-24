@@ -54,10 +54,16 @@ export default function MainContent() {
   };
 
   const handleDeleteTask = (taskId, category) => {
-    setTasks((prevTasks) => ({
-      ...prevTasks,
-      [category]: prevTasks[category].filter((task) => task.id !== taskId),
-    }));
+    // Show a confirmation alert before deleting the task
+    const confirmed = window.confirm("Are you sure you want to delete this task?");
+  
+    if (confirmed) {
+      // If the user confirms, proceed to delete the task
+      setTasks((prevTasks) => ({
+        ...prevTasks,
+        [category]: prevTasks[category].filter((task) => task.id !== taskId),
+      }));
+    }
   };
 
   const handleEditTask = (task) => {
